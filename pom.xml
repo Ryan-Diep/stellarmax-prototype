@@ -58,6 +58,17 @@
 	                </dependency>
 	            </dependencies>
 	        </plugin>
+	        
+	        <plugin> 
+			  <groupId>com.microsoft.azure</groupId>  
+			  <artifactId>azure-webapp-maven-plugin</artifactId>  
+			  <version>2.2.0</version>  
+			  <configuration>
+			    <resourceGroup>Stellarmax-group</resourceGroup>
+			    <appName>Stellarmax-prototype</appName>
+			    <pricingTier>Free</pricingTier>
+			  </configuration>
+			</plugin> 
 		</plugins>
 	</build>
 
