@@ -17,6 +17,11 @@ public class StellarmaxprototypeApplication {
 	@Autowired
 	private EmployeeRepository repository;
 	
+	@GetMapping("")
+	public String viewHomePage() {
+		return "index";
+	}
+	
 	public Employee addEmployee(@RequestBody Employee employee) {
 		return repository.save(employee);
 	}
