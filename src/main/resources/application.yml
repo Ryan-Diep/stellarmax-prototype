@@ -1,6 +1,6 @@
 spring:
   datasource:
-    url: jdbc:sqlserver://stellarmax.database.windows.net:1433;database=stellarmaxdb;user=stellarmax@stellarmax;password={your_password_here};encrypt=true;trustServerCertificate=false;hostNameInCertificate=*.database.windows.net;loginTimeout=30;
+    url: jdbc:sqlserver://steallarmaxprototypeserver.database.windows.net:1433;database=Stellarmax-prototype-db;user=stellarmax@steallarmaxprototypeserver;password={your_password_here};encrypt=true;trustServerCertificate=false;hostNameInCertificate=*.database.windows.net;loginTimeout=30;
     username: stellarmax
     password: password@123
     
