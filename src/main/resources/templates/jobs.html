@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+	<html xmlns:th="http://www.thymeleaf.org">
+	<head>
+	    <meta charset="ISO-8859-1">
+	    <title>List Users</title>
+	    <link rel="stylesheet" type="text/css" href="/webjars/bootstrap/css/bootstrap.min.css" />
+	    <script type="text/javascript" src="/webjars/jquery/jquery.min.js"></script>
+	    <script type="text/javascript" src="/webjars/bootstrap/js/bootstrap.min.js"></script>
+	</head>
+	<body>
+		<div class="container text-center">
+		    <div>
+<!------------------header---------------- -->
+		        <div class="header">
+		            <div class="container">
+		                <div>
+		
+<!-----list of items on navbar -->
+		                    <nav>
+		                        <ul>
+									<li><a href="/home" class="navbarButton">Home</a></li>
+		                            <li><a href="/users" class="navbarButton">Users</a></li>
+		                            <li><a href="/clients" class="navbarButton">Clients</a></li>
+		                            <li><a href="/jobs" class="navbarButton">Jobs</a></li>
+		                        </ul>
+		                    </nav>
+		                </div>
+		            </div>
+		        </div>
+		        
+		        <form th:action="@{/logout}" method="post">
+		            <p>
+		                Welcome <b>[[${#request.userPrincipal.principal.fullName}]]</b>
+		            </p>
+		            <input type="submit" value="Sign Out" />
+		        </form>
+		        <h3><a th:href="@{/jobs/add}">Add Job</a></h3>
+		    </div>
+		    
+		    <div>
+		        <h1>List of Jobs</h1>
+		    </div>
+		     
+		    <div>
+		        <table class="table table-striped table-bordered">
+		            <thead class="thead-dark">
+		                <tr>
+		                    <th>User ID</th>
+		                    <th>Email</th>
+		                    <th>Service</th>
+		                    <th>Before Photo</th>
+		                    <th>After Photo</th>
+		                    <th>Actions</th>
+		                </tr>
+		            </thead>
+		            <tbody>
+		                <tr th:each="job: ${listJobs}">
+		                    <td th:text="${job.id}">Case ID</td>
+		                    <td th:text="${job.email}">Email</td>
+		                    <td th:text="${job.service}">Service</td>
+		                    <td th:text="${job.beforePhoto}">Primary Address</td>
+		                    <td th:text="${job.afterPhoto}">Secondary Address</td>
+		                    <td>
+		                    	<a th:href = "@{/jobs/edit/{id}(id=${job.id})}"
+								 class = "btn btn-primary">Edit</a>
+								
+								<a th:href = "@{/jobs/{id}(id=${job.id})}"
+								 class = "btn btn-danger">Delete</a>
+		                    </td>
+		                </tr>
+		            </tbody>
+		        </table>
+		    </div>
+		</div>
+	</body>
+</html>

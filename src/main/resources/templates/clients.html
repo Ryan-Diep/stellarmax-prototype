@@ -2,7 +2,7 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="ISO-8859-1">
-    <title>List Users</title>
+    <title>List Clients</title>
     <link rel="stylesheet" type="text/css" href="/webjars/bootstrap/css/bootstrap.min.css" />
     <script type="text/javascript" src="/webjars/jquery/jquery.min.js"></script>
     <script type="text/javascript" src="/webjars/bootstrap/js/bootstrap.min.js"></script>
@@ -18,7 +18,7 @@
                     <!--list of items on navbar-->
                     <nav>
                         <ul>
-							<li><a href="/home" class="navbarButton">Home</a></li>
+                            <li><a href="/home" class="navbarButton">Home</a></li>
                             <li><a href="/users" class="navbarButton">Users</a></li>
                             <li><a href="/clients" class="navbarButton">Clients</a></li>
                             <li><a href="/jobs" class="navbarButton">Jobs</a></li>
@@ -34,37 +34,41 @@
             </p>
             <input type="submit" value="Sign Out" />
         </form>
-        <h3><a th:href="@{/users/add}">Add User</a></h3>
+        <h3><a th:href="@{/clients/add}">Add Client</a></h3>
     </div>
     
     <div>
-        <h1>List of Users</h1>
+        <h1>List of Clients</h1>
     </div>
      
     <div>
         <table class="table table-striped table-bordered">
             <thead class="thead-dark">
                 <tr>
-                    <th>User ID</th>
+                    <th>Client ID</th>
                     <th>Email</th>
                     <th>First Name</th>
                     <th>Last Name</th>
-                    <th>Role</th>
+                    <th>Phone Number</th>
+                    <th>Primary Address</th>
+                    <th>Secondary Address</th>
                     <th>Actions</th>
                 </tr>
             </thead>
             <tbody>
-                <tr th:each="user: ${listUsers}">
-                    <td th:text="${user.id}">User ID</td>
-                    <td th:text="${user.email}">Email</td>
-                    <td th:text="${user.firstName}">First Name</td>
-                    <td th:text="${user.lastName}">Last Name</td>
-                    <td th:text="${user.roleId}">Role</td>
+                <tr th:each="client: ${listClients}">
+                    <td th:text="${client.id}">User ID</td>
+                    <td th:text="${client.email}">Email</td>
+                    <td th:text="${client.firstName}">First Name</td>
+                    <td th:text="${client.lastName}">Last Name</td>
+                    <td th:text="${client.phoneNumber}">Phone Number</td>
+                    <td th:text="${client.primaryAddress}">Primary Address</td>
+                    <td th:text="${client.secondaryAddress}">Secondary Address</td>
                     <td>
-                    	<a th:href = "@{/users/edit/{id}(id=${user.id})}"
+                    	<a th:href = "@{/clients/edit/{id}(id=${client.id})}"
 						 class = "btn btn-primary">Edit</a>
 						
-						<a th:href = "@{/users/{id}(id=${user.id})}"
+						<a th:href = "@{/clients/{id}(id=${client.id})}"
 						 class = "btn btn-danger">Delete</a>
                     </td>
                 </tr>

@@ -1,7 +1,7 @@
-package com.stellarmaxprototype;
-
+package com.stellarmaxprototype.security;
+ 
 import javax.sql.DataSource;
-
+ 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -12,6 +12,8 @@ import org.springframework.security.config.annotation.web.configuration.EnableWe
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+
+import com.stellarmaxprototype.service.UserSecurityService;
  
 @Configuration
 @EnableWebSecurity
@@ -21,7 +23,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
      
     @Bean
     public UserDetailsService userDetailsService() {
-        return new CustomUserDetailsService();
+        return new UserSecurityService();
     }
      
     @Bean
@@ -46,14 +48,17 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
     @Override
     protected void configure(HttpSecurity http) throws Exception {
         http.authorizeRequests()
-            .antMatchers("/list_users").authenticated()
+            .antMatchers("/users").authenticated()
+            .antMatchers("/clients").authenticated()
+            .antMatchers("/jobs").authenticated()
+//            .antMatchers("/add_job").authenticated()
             .anyRequest().permitAll()
             .and()
             .formLogin()
             	.loginPage("/login")
                 .usernameParameter("email")
                 .passwordParameter("password")
-                .defaultSuccessUrl("/list_users")
+                .defaultSuccessUrl("/users")
                 .permitAll()
             .and()
             .logout()

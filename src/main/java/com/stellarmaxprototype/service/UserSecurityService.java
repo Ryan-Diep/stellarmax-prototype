@@ -1,11 +1,15 @@
-package com.stellarmaxprototype;
+package com.stellarmaxprototype.service;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 
-public class CustomUserDetailsService implements UserDetailsService{
+import com.stellarmaxprototype.entity.UserSecurity;
+import com.stellarmaxprototype.entity.User;
+import com.stellarmaxprototype.repository.UserRepository;
+
+public class UserSecurityService implements UserDetailsService{
 	
 	@Autowired
 	private UserRepository repo;
@@ -16,7 +20,7 @@ public class CustomUserDetailsService implements UserDetailsService{
 		if(user == null) {
 			throw new UsernameNotFoundException("User not found");
 		}
-		return new CustomUserDetails(user);
+		return new UserSecurity(user);
 	}
 
 }

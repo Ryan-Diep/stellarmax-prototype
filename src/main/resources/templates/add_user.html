@@ -8,10 +8,10 @@
 	<body>
 		<div class="container text-center">
 			<div>
-				<h1>Sign Up</h1>
+				<h1>Add User</h1>
 			</div>
 			
-			<form th:action="@{/process_register}" method="post"
+			<form action="#" th:action="@{/users/process}" method="post"
 				style="max-width: 600px; margin: 0 auto;"
 				th:object="${user}">
 				<div class="m-3">
@@ -45,13 +45,17 @@
 					</div>
 					
 					<div class="form-group row">
+						<label class="col-form-label col-4">Role</label>
+				        <select th:field="*{role}">
+<!-- 				        	<option value="default">Select a Role</option> -->
+				            <option th:each="p : ${listRole}" th:value="${p}" th:text="${p}" />
+				        </select>
+				    </div>
 					
-					</div>
-						<label class="col-form-label col-4">Image</label>
-						<input type="file"/>
-					<div>
+					<div class="form-group row">
 					
-						<button type="submit" class="btn btn-primary">Sign Up</button>
+					
+						<button th:action="@{/users}" type="submit" class="btn btn-primary">Add User</button>
 					</div>	
 				</div>
 			</form>	

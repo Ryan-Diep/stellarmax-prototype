@@ -1,4 +1,4 @@
-package com.stellarmaxprototype;
+package com.stellarmaxprototype.entity;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -20,18 +20,30 @@ public class User {
 	@Column(nullable = false, length = 64)
 	private String password;
 	
-	public String getPassword() {
-		return password;
-	}
-	public void setPassword(String password) {
-		this.password = password;
-	}
 	@Column(nullable = false, length = 20)
     private String firstName;
     
 	@Column(nullable = false, length = 20)
     private String lastName;
     
+	@Column(nullable = false)
+    private int roleId;
+	
+	@javax.persistence.Transient
+	private String role;
+	
+	public User() {
+		
+	}
+	
+	public User(String firstName, String lastName, String email, int roleId) {
+		super();
+		this.firstName = firstName;
+		this.lastName = lastName;
+		this.email = email;
+		this.roleId = roleId;
+	}
+	
     public Long getId() {
 		return id;
 	}
@@ -46,6 +58,13 @@ public class User {
 	
 	public void setEmail(String email) {
 		this.email = email;
+	}
+	
+	public String getPassword() {
+		return password;
+	}
+	public void setPassword(String password) {
+		this.password = password;
 	}
 	
 	public String getFirstName() {
@@ -63,5 +82,37 @@ public class User {
 	public void setLastName(String lastName) {
 		this.lastName = lastName;
 	}
+	public int getRoleId() {
+		return roleId;
+	}
 	
+	public void setRoleId(int roleId) {
+		this.roleId = roleId;
+	}
+	
+	public String getRole() {
+		return role;
+	}
+	
+	public void setRole(String role) {
+		this.role = role;
+	}
+	
+	public int roleToRoleId(String role) {
+		if(role.equals("Administrator")) {
+			return 1;
+		}
+		else {
+			return 2;
+		}
+	}
+	
+	public String roleIdToRole(int roleId) {
+		if(roleId == 1) {
+			return "Administrator";
+		}
+		else {
+			return "Technician";
+		}
+	}
   }

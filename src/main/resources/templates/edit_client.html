@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+	<head>
+		<meta charset="ISO-8859-1">
+		<title>Home</title>
+		<link rel="stylesheet" type="text/css" href="/webjars/bootstrap/css/bootstrap.min.css" />
+	</head>
+	<body>
+		<div class="container text-center">
+			<div>
+				<h1>Edit Client</h1>
+			</div>
+			
+			<form th:action="@{/clients/{id} (id=${client.id})}" method="post"
+				style="max-width: 600px; margin: 0 auto;"
+				th:object="${client}">					
+				<div class ="form-group">
+						<label> Client First Name </label>
+						<input
+						type = "text"
+						name = "firstName"
+						th:field = "*{firstName}"
+						class = "form-control"
+						placeholder="Enter Client First Name" 
+						/>
+					</div>
+					
+					<div class ="form-group">
+						<label> Client Last Name </label>
+						<input
+						type = "text"
+						name = "lastName"
+						th:field = "*{lastName}"
+						class = "form-control"
+						placeholder="Enter Client Last Name" 
+						/>
+					</div>
+					
+					<div class ="form-group">
+						<label> Client Email </label>
+						<input
+						type = "email"
+						name = "email"
+						th:field = "*{email}"
+						class = "form-control"
+						placeholder="Enter Client Email" 
+						/>
+					</div>
+					
+					<div class ="form-group">
+						<label> Client Phone Number </label>
+						<input
+						type = "number"
+						name = "phoneNumber"
+						th:field = "*{phoneNumber}"
+						class = "form-control"
+						placeholder="Enter Client Phone Number" 
+						/>
+					</div>
+					
+					<div class ="form-group">
+						<label>Client Primary Address</label>
+						<input
+						type = "text"
+						name = "primaryAddress"
+						th:field = "*{primaryAddress}"
+						class = "form-control"
+						placeholder="Enter Client Primary Address" 
+						/>
+					</div>
+					
+					<div class ="form-group">
+						<label> Client Secondary Address </label>
+						<input
+						type = "text"
+						name = "secondaryAddress"
+						th:field = "*{secondaryAddress}"
+						class = "form-control"
+						placeholder="Enter Client Secondary Address" 
+						/>
+					</div>
+					
+					<div class = "box-footer">
+						<button type="submit" class = "btn btn-primary">
+							Submit
+						</button>
+					</div>
+				</form>
+		</div>
+	</body>
+</html>

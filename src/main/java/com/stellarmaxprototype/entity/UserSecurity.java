@@ -1,15 +1,15 @@
-package com.stellarmaxprototype;
-
+package com.stellarmaxprototype.entity;
+ 
 import java.util.Collection;
-
+ 
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
  
-public class CustomUserDetails implements UserDetails {
+public class UserSecurity implements UserDetails {
  
     private User user;
      
-    public CustomUserDetails(User user) {
+    public UserSecurity(User user) {
         this.user = user;
     }
  

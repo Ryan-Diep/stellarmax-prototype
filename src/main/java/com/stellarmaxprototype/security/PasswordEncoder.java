@@ -1,4 +1,4 @@
-package com.stellarmaxprototype;
+package com.stellarmaxprototype.security;
 
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 

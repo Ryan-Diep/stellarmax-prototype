@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+	<head>
+		<meta charset="ISO-8859-1">
+		<title>Home</title>
+		<link rel="stylesheet" type="text/css" href="/webjars/bootstrap/css/bootstrap.min.css" />
+	</head>
+	<body>
+		<div class="container text-center">
+			<div>
+				<h1>Edit User</h1>
+			</div>
+			
+				<form th:action="@{/users/{id}}" method="post"
+				style="max-width: 600px; margin: 0 auto;"
+				th:object="${user}">
+					<div class ="form-group">
+						<label> User First Name </label>
+						<input
+						type = "text"
+						name = "firstName"
+						th:field = "*{firstName}"
+						class = "form-control"
+						placeholder="Enter User First Name" 
+						/>
+					</div>
+					
+					<div class ="form-group">
+						<label> User Last Name </label>
+						<input
+						type = "text"
+						name = "lastName"
+						th:field = "*{lastName}"
+						class = "form-control"
+						placeholder="Enter User Last Name" 
+						/>
+					</div>
+					
+					<div class ="form-group">
+						<label> User Email </label>
+						<input
+						type = "email"
+						name = "email"
+						th:field = "*{email}"
+						class = "form-control"
+						placeholder="Enter User Email" 
+						/>
+					</div>
+					
+					<div class = "box-footer">
+						<button type="submit" class = "btn btn-primary">
+							Submit
+						</button>
+					</div>
+				</form>
+		</div>
+	</body>
+</html>
